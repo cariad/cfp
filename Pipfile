@@ -10,11 +10,13 @@ boto3 = "~=1.18"
 black = "==21.9b0"
 boto3-stubs = {extras = ["ssm"], version = "*"}
 flake8 = "*"
+furo = "*"
 isort = "*"
 mypy = "*"
 pytest = "*"
 pytest-cov = "*"
 shellcheck-py = "*"
+sphinx = "*"
 twine = "*"
 yamllint = "*"
 

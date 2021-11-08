@@ -24,6 +24,8 @@ print(sp.api)
 [{'ParameterKey': 'ParameterA', 'ParameterValue': 'Value A'}, {'ParameterKey': 'ParameterB', 'ParameterValue': 'Value B'}]
 ```
 
+The `.api` property can be passed directly to boto3:
+
 ```python
 from cfp import StackParameters
 from boto3.session import Session

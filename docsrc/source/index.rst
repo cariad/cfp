@@ -1,7 +1,7 @@
 cfp
 ===
 
-**cfp** is a Python package for building Amazon Web Services **C**\ loud\ **F**\ ormation **p**\ arameters for boto3.
+**cfp** is a Python package for building Amazon Web Services **C**\ loud\ **F**\ ormation **p**\ arameters. The output is compatible with boto3.
 
 .. toctree::
    :maxdepth: 3

@@ -34,7 +34,7 @@ setup(
     author="Cariad Eccleston",
     author_email="cariad@cariad.earth",
     classifiers=classifiers,
-    description="CloudFormation parameters builder",
+    description="Builds Amazon Web Services CloudFormation parameters",
     include_package_data=True,
     install_requires=[
         "boto3 >=1.18.59, <2.0",
@@ -45,9 +45,17 @@ setup(
     name="cfp",
     packages=[
         "cfp",
+        "cfp.exceptions",
+        "cfp.resolver_factories",
+        "cfp.resolvers",
+        "cfp.sources",
     ],
     package_data={
         "cfp": ["py.typed"],
+        "cfp.exceptions": ["py.typed"],
+        "cfp.resolver_factories": ["py.typed"],
+        "cfp.resolvers": ["py.typed"],
+        "cfp.sources": ["py.typed"],
     },
     python_requires=">=3.8",
     url="https://github.com/cariad/cfp",

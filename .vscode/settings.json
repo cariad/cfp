@@ -1,6 +1,10 @@
 {
   "cSpell.words": [
-    "furo"
+    "furo",
+    "maxdepth",
+    "testcode",
+    "testoutput",
+    "toctree"
   ],
   "restructuredtext.confPath": "${workspaceFolder}/docsrc/source"
 }

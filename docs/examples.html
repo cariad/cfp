@@ -2,9 +2,12 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="#" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Python usage" href="python/index.html" /><link rel="prev" title="cfp" href="index.html" />
 
-    <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/><title>Search - cfp  documentation</title><link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
+        <title>Examples - cfp documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
     
@@ -131,7 +134,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -145,16 +148,16 @@
   
   <span class="sidebar-brand-text">cfp  documentation</span>
   
-</a><form class="sidebar-search-container" method="get" action="#" role="search">
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Docs</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">cfp</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Examples</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="python/index.html">Python usage</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="python/stack_parameters.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">StackParameters</span></code></a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="python/sources/index.html">Sources</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -184,31 +187,91 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          
-<noscript>
-<div class="admonition error">
-  <p class="admonition-title">Error</p>
-  <p>
-    Please activate JavaScript to enable the search functionality.
-  </p>
-</div>
-</noscript>
+          <section id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<section id="hard-coded-values">
+<h2>Hard-coded values<a class="headerlink" href="#hard-coded-values" title="Permalink to this headline">¶</a></h2>
+<p>To construct a parameter set with hard-coded values, call <a class="reference internal" href="python/stack_parameters.html#cfp.StackParameters.add" title="cfp.StackParameters.add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add()</span></code></a> with the keys and values:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cfp</span> <span class="kn">import</span> <span class="n">StackParameters</span>
 
-<div id="search-results"></div>
+<span class="n">sp</span> <span class="o">=</span> <span class="n">StackParameters</span><span class="p">()</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"ParameterA"</span><span class="p">,</span> <span class="s2">"Value A"</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"ParameterB"</span><span class="p">,</span> <span class="s2">"Value B"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">api</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[{'ParameterKey': 'ParameterA', 'ParameterValue': 'Value A'}, {'ParameterKey': 'ParameterB', 'ParameterValue': 'Value B'}]
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="python/stack_parameters.html#cfp.StackParameters.api" title="cfp.StackParameters.api"><code class="xref py py-attr docutils literal notranslate"><span class="pre">api</span></code></a> property can be passed directly to boto3:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cfp</span> <span class="kn">import</span> <span class="n">StackParameters</span>
+<span class="kn">from</span> <span class="nn">boto3.session</span> <span class="kn">import</span> <span class="n">Session</span>
+
+<span class="n">sp</span> <span class="o">=</span> <span class="n">StackParameters</span><span class="p">()</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"ParameterA"</span><span class="p">,</span> <span class="s2">"Value A"</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"ParameterB"</span><span class="p">,</span> <span class="s2">"Value B"</span><span class="p">)</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s2">"cloudformation"</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">create_change_set</span><span class="p">(</span>
+   <span class="n">StackName</span><span class="o">=</span><span class="s2">"MyStack"</span><span class="p">,</span>
+   <span class="n">ChangeSetName</span><span class="o">=</span><span class="s2">"MyChangeSet"</span><span class="p">,</span>
+   <span class="n">ChangeSetType</span><span class="o">=</span><span class="s2">"UPDATE,</span>
+   <span class="n">Parameters</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">api</span><span class="p">,</span>
+   <span class="n">TemplateBody</span><span class="o">=</span><span class="s2">"..."</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="parameter-store-look-up">
+<h2>Parameter Store look-up<a class="headerlink" href="#parameter-store-look-up" title="Permalink to this headline">¶</a></h2>
+<p>To look-up a value in Systems Manager Parameter Store, set the parameter’s value to a <a class="reference internal" href="python/sources/from_parameter_store.html#cfp.sources.FromParameterStore" title="cfp.sources.FromParameterStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">FromParameterStore</span></code></a> instance:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cfp</span> <span class="kn">import</span> <span class="n">FromParameterStore</span><span class="p">,</span> <span class="n">StackParameters</span>
+
+<span class="n">sp</span> <span class="o">=</span> <span class="n">StackParameters</span><span class="p">()</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"ParameterA"</span><span class="p">,</span> <span class="n">FromParameterStore</span><span class="p">(</span><span class="s2">"/cfp/example1"</span><span class="p">))</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"ParameterB"</span><span class="p">,</span> <span class="n">FromParameterStore</span><span class="p">(</span><span class="s2">"/cfp/example2"</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">api</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[{'ParameterKey': 'ParameterA', 'ParameterValue': 'foo'}, {'ParameterKey': 'ParameterB', 'ParameterValue': 'bar'}]
+</pre></div>
+</div>
+</section>
+</section>
 
         </article>
       </div>
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="python/index.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Python usage</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="index.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Home</div>
+                
+              </div>
+            </a>
         </div>
 
         <div class="related-information">
@@ -216,13 +279,37 @@
             Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
               and
               <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
-              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>. |
+            <a class="muted-link" href="_sources/examples.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
         </div>
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Examples</a><ul>
+<li><a class="reference internal" href="#hard-coded-values">Hard-coded values</a></li>
+<li><a class="reference internal" href="#parameter-store-look-up">Parameter Store look-up</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
@@ -232,8 +319,5 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/scripts/main.js"></script>
-    
-<script src="_static/searchtools.js"></script>
-<script src="_static/language_data.js"></script>
-<script src="searchindex.js"></script></body>
+    </body>
 </html>

@@ -1,13 +1,19 @@
 cfp
 ===
 
-**cfp** is a Python package for building Amazon Web Services **C**\ loud\ **F**\ ormation **p**\ arameters for boto3.
+**cfp** is a Python package for building Amazon Web Services **C**\ loud\ **F**\ ormation stack **p**\ arameters.
+
+In particular, **cfp** helps to efficiently reference parameter values in Parameter Store, even across accounts and regions.
+
+The output is compatible with boto3.
 
 .. toctree::
-   :maxdepth: 3
-   :caption: Contents:
+   :maxdepth: 2
+   :caption: Docs
 
    self
+   examples
+   python/index
 
 Installation
 ------------

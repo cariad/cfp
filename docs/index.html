@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Examples" href="examples.html" />
 
     <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
         <title>cfp documentation</title>
@@ -154,9 +154,19 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+  <p class="caption" role="heading"><span class="caption-text">Docs</span></p>
 <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">cfp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="python/index.html">Python usage</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="python/stack_parameters.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">StackParameters</span></code></a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="python/sources/index.html">Sources</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="python/sources/source.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">Source</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="python/sources/from_parameter_store.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FromParameterStore</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
 </div>
@@ -185,11 +195,23 @@
         <article role="main">
           <section id="cfp">
 <h1>cfp<a class="headerlink" href="#cfp" title="Permalink to this headline">¶</a></h1>
-<p><strong>cfp</strong> is a Python package for building Amazon Web Services <strong>C</strong>loud<strong>F</strong>ormation <strong>p</strong>arameters for boto3.</p>
+<p><strong>cfp</strong> is a Python package for building Amazon Web Services <strong>C</strong>loud<strong>F</strong>ormation stack <strong>p</strong>arameters.</p>
+<p>In particular, <strong>cfp</strong> helps to efficiently reference parameter values in Parameter Store, even across accounts and regions.</p>
+<p>The output is compatible with boto3.</p>
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Docs</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">cfp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#hard-coded-values">Hard-coded values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#parameter-store-look-up">Parameter Store look-up</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="python/index.html">Python usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="python/stack_parameters.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">StackParameters</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="python/sources/index.html">Sources</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <section id="installation">
@@ -216,7 +238,15 @@
       <footer>
         
         <div class="related-pages">
-          
+          <a class="next-page" href="examples.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Examples</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
           
         </div>
 

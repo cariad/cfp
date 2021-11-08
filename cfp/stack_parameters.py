@@ -67,6 +67,27 @@ class StackParameters:
         """
         Gets the resolved parameters as a list ready to pass directly to
         CloudFormation.
+
+        Example:
+
+            .. code-block:: python
+
+                from cfp import StackParameters
+                from boto3.session import Session
+
+                sp = StackParameters()
+                sp.add("ParameterA", "Value A")
+                sp.add("ParameterB", "Value B")
+
+                client = session.client("cloudformation")
+                client.create_change_set(
+                    StackName="MyStack",
+                    ChangeSetName="MyChangeSet",
+                    ChangeSetType="UPDATE,
+                    Parameters=sp.api,
+                    TemplateBody="...",
+                )
+
         """
 
         cf_params: List[ApiParameter] = []

@@ -12,7 +12,7 @@ def test_api() -> None:
     sp = StackParameters()
     sp.add("foo", "one")
     sp.add("bar", "two")
-    assert sp.api == [
+    assert sp.api_parameters == [
         {
             "ParameterKey": "foo",
             "ParameterValue": "one",

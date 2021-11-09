@@ -14,13 +14,13 @@ To construct a parameter set with hard-coded values, call :meth:`.add` with the 
    sp.add("ParameterA", "Value A")
    sp.add("ParameterB", "Value B")
 
-   print(sp.api)
+   print(sp.api_parameters)
 
 .. testoutput::
 
    [{'ParameterKey': 'ParameterA', 'ParameterValue': 'Value A'}, {'ParameterKey': 'ParameterB', 'ParameterValue': 'Value B'}]
 
-The :py:attr:`.api` property can be passed directly to boto3:
+The :py:attr:`.api_parameters` property can be passed directly to boto3:
 
 .. code-block:: python
 
@@ -36,7 +36,7 @@ The :py:attr:`.api` property can be passed directly to boto3:
       StackName="MyStack",
       ChangeSetName="MyChangeSet",
       ChangeSetType="UPDATE,
-      Parameters=sp.api,
+      Parameters=sp.api_parameters,
       TemplateBody="...",
    )
 
@@ -53,7 +53,7 @@ To look-up a value in Systems Manager Parameter Store, set the parameter's value
    sp.add("ParameterA", FromParameterStore("/cfp/example1"))
    sp.add("ParameterB", FromParameterStore("/cfp/example2"))
 
-   print(sp.api)
+   print(sp.api_parameters)
 
 .. testoutput::
 

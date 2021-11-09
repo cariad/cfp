@@ -218,8 +218,8 @@
 </dl>
 </dd></dl>
 <dl class="py property">
-<dt class="sig sig-object py" id="cfp.StackParameters.api">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">api</span></span><em class="property"><span class="pre">:</span> <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">cfp.types.ApiParameter</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#cfp.StackParameters.api" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="cfp.StackParameters.api_parameters">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">api_parameters</span></span><em class="property"><span class="pre">:</span> <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">cfp.types.ApiParameter</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#cfp.StackParameters.api_parameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the resolved parameters as a list ready to pass directly to
 CloudFormation.</p>
 <p class="rubric">Example</p>
@@ -235,7 +235,7 @@ CloudFormation.</p>
     <span class="n">StackName</span><span class="o">=</span><span class="s2">"MyStack"</span><span class="p">,</span>
     <span class="n">ChangeSetName</span><span class="o">=</span><span class="s2">"MyChangeSet"</span><span class="p">,</span>
     <span class="n">ChangeSetType</span><span class="o">=</span><span class="s2">"UPDATE,</span>
-    <span class="n">Parameters</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">api</span><span class="p">,</span>
+    <span class="n">Parameters</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">api_parameters</span><span class="p">,</span>
     <span class="n">TemplateBody</span><span class="o">=</span><span class="s2">"..."</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>

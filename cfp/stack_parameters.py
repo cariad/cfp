@@ -63,7 +63,7 @@ class StackParameters:
             self._resolvers.append(resolver)
 
     @property
-    def api(self) -> List[ApiParameter]:
+    def api_parameters(self) -> List[ApiParameter]:
         """
         Gets the resolved parameters as a list ready to pass directly to
         CloudFormation.
@@ -84,7 +84,7 @@ class StackParameters:
                     StackName="MyStack",
                     ChangeSetName="MyChangeSet",
                     ChangeSetType="UPDATE,
-                    Parameters=sp.api,
+                    Parameters=sp.api_parameters,
                     TemplateBody="...",
                 )
 

@@ -17,14 +17,14 @@ sp = StackParameters()
 sp.add("ParameterA", "Value A")
 sp.add("ParameterB", "Value B")
 
-print(sp.api)
+print(sp.api_parameters)
 ```
 
 ```python
 [{'ParameterKey': 'ParameterA', 'ParameterValue': 'Value A'}, {'ParameterKey': 'ParameterB', 'ParameterValue': 'Value B'}]
 ```
 
-The `api` property can be passed directly to boto3:
+The `api_parameters` property can be passed directly to boto3:
 
 ```python
 from cfp import StackParameters
@@ -39,7 +39,7 @@ client.create_change_set(
     StackName="MyStack",
     ChangeSetName="MyChangeSet",
     ChangeSetType="UPDATE,
-    Parameters=sp.api,
+    Parameters=sp.api_parameters,
     TemplateBody="...",
 )
 ```
@@ -53,7 +53,7 @@ sp = StackParameters()
 sp.add("ParameterA", FromParameterStore("/cfp/example1"))
 sp.add("ParameterB", FromParameterStore("/cfp/example2"))
 
-print(sp.api)
+print(sp.api_parameters)
 ```
 
 ```python

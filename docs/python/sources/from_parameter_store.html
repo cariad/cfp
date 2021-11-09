@@ -207,7 +207,7 @@ Parameter Store.</p>
 <span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"ParameterA"</span><span class="p">,</span> <span class="n">FromParameterStore</span><span class="p">(</span><span class="s2">"/cfp/example1"</span><span class="p">))</span>
 <span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"ParameterB"</span><span class="p">,</span> <span class="n">FromParameterStore</span><span class="p">(</span><span class="s2">"/cfp/example2"</span><span class="p">))</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">api</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">api_parameters</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[{'ParameterKey': 'ParameterA', 'ParameterValue': 'foo'}, {'ParameterKey': 'ParameterB', 'ParameterValue': 'bar'}]

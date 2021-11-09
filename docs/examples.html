@@ -204,13 +204,13 @@
 <span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"ParameterA"</span><span class="p">,</span> <span class="s2">"Value A"</span><span class="p">)</span>
 <span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"ParameterB"</span><span class="p">,</span> <span class="s2">"Value B"</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">api</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">api_parameters</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[{'ParameterKey': 'ParameterA', 'ParameterValue': 'Value A'}, {'ParameterKey': 'ParameterB', 'ParameterValue': 'Value B'}]
 </pre></div>
 </div>
-<p>The <a class="reference internal" href="python/stack_parameters.html#cfp.StackParameters.api" title="cfp.StackParameters.api"><code class="xref py py-attr docutils literal notranslate"><span class="pre">api</span></code></a> property can be passed directly to boto3:</p>
+<p>The <a class="reference internal" href="python/stack_parameters.html#cfp.StackParameters.api_parameters" title="cfp.StackParameters.api_parameters"><code class="xref py py-attr docutils literal notranslate"><span class="pre">api_parameters</span></code></a> property can be passed directly to boto3:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cfp</span> <span class="kn">import</span> <span class="n">StackParameters</span>
 <span class="kn">from</span> <span class="nn">boto3.session</span> <span class="kn">import</span> <span class="n">Session</span>
 
@@ -223,7 +223,7 @@
    <span class="n">StackName</span><span class="o">=</span><span class="s2">"MyStack"</span><span class="p">,</span>
    <span class="n">ChangeSetName</span><span class="o">=</span><span class="s2">"MyChangeSet"</span><span class="p">,</span>
    <span class="n">ChangeSetType</span><span class="o">=</span><span class="s2">"UPDATE,</span>
-   <span class="n">Parameters</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">api</span><span class="p">,</span>
+   <span class="n">Parameters</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">api_parameters</span><span class="p">,</span>
    <span class="n">TemplateBody</span><span class="o">=</span><span class="s2">"..."</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -238,7 +238,7 @@
 <span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"ParameterA"</span><span class="p">,</span> <span class="n">FromParameterStore</span><span class="p">(</span><span class="s2">"/cfp/example1"</span><span class="p">))</span>
 <span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"ParameterB"</span><span class="p">,</span> <span class="n">FromParameterStore</span><span class="p">(</span><span class="s2">"/cfp/example2"</span><span class="p">))</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">api</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">api_parameters</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[{'ParameterKey': 'ParameterA', 'ParameterValue': 'foo'}, {'ParameterKey': 'ParameterB', 'ParameterValue': 'bar'}]

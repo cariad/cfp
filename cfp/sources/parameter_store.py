@@ -22,7 +22,7 @@ class FromParameterStore(Source):
             sp.add("ParameterA", FromParameterStore("/cfp/example1"))
             sp.add("ParameterB", FromParameterStore("/cfp/example2"))
 
-            print(sp.api)
+            print(sp.api_parameters)
 
         .. testoutput::
 

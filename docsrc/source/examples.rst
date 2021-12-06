@@ -45,8 +45,6 @@ Parameter Store look-up
 
 To look-up a value in Systems Manager Parameter Store, set the parameter's value to a :class:`.FromParameterStore` instance:
 
-.. testcode::
-
    from cfp import FromParameterStore, StackParameters
 
    sp = StackParameters()
@@ -54,7 +52,3 @@ To look-up a value in Systems Manager Parameter Store, set the parameter's value
    sp.add("ParameterB", FromParameterStore("/cfp/example2"))
 
    print(sp.api_parameters)
-
-.. testoutput::
-
-   [{'ParameterKey': 'ParameterA', 'ParameterValue': 'foo'}, {'ParameterKey': 'ParameterB', 'ParameterValue': 'bar'}]

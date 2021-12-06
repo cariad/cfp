@@ -14,8 +14,6 @@ class FromParameterStore(Source):
 
     Example:
 
-        .. testcode::
-
             from cfp import FromParameterStore, StackParameters
 
             sp = StackParameters()
@@ -23,10 +21,6 @@ class FromParameterStore(Source):
             sp.add("ParameterB", FromParameterStore("/cfp/example2"))
 
             print(sp.api_parameters)
-
-        .. testoutput::
-
-            [{'ParameterKey': 'ParameterA', 'ParameterValue': 'foo'}, {'ParameterKey': 'ParameterB', 'ParameterValue': 'bar'}]
 
     """
 

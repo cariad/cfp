@@ -64,6 +64,6 @@ Read the full documentation at [cariad.github.io/cfp](https://cariad.github.io/c
 
 ## 👋 Hello!
 
-**Hello!** I'm [Cariad Eccleston](https://cariad.io) and I'm an independent/freelance software engineer. If my work has value to you, please consider [sponsoring](https://github.com/sponsors/cariad/).
+**Hello!** I'm [Cariad Eccleston](https://cariad.earth) and I'm an independent/freelance software engineer. If my work has value to you, please consider [sponsoring](https://github.com/sponsors/cariad/).
 
 If you ever raise a bug, request a feature or ask a question then mention that you're a sponsor and I'll respond as a priority. Thank you!

@@ -5,11 +5,11 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Python usage" href="python/index.html" /><link rel="prev" title="cfp" href="index.html" />
 
-    <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
+    <meta name="generator" content="sphinx-4.3.1, furo 2021.11.23"/>
         <title>Examples - cfp documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=7f0192ddeb2adecfbaa87ffbcf67d16358b30bc1" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
     
     
 
@@ -232,18 +232,13 @@
 <section id="parameter-store-look-up">
 <h2>Parameter Store look-up<a class="headerlink" href="#parameter-store-look-up" title="Permalink to this headline">¶</a></h2>
 <p>To look-up a value in Systems Manager Parameter Store, set the parameter’s value to a <a class="reference internal" href="python/sources/from_parameter_store.html#cfp.sources.FromParameterStore" title="cfp.sources.FromParameterStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">FromParameterStore</span></code></a> instance:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cfp</span> <span class="kn">import</span> <span class="n">FromParameterStore</span><span class="p">,</span> <span class="n">StackParameters</span>
-
-<span class="n">sp</span> <span class="o">=</span> <span class="n">StackParameters</span><span class="p">()</span>
-<span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"ParameterA"</span><span class="p">,</span> <span class="n">FromParameterStore</span><span class="p">(</span><span class="s2">"/cfp/example1"</span><span class="p">))</span>
-<span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"ParameterB"</span><span class="p">,</span> <span class="n">FromParameterStore</span><span class="p">(</span><span class="s2">"/cfp/example2"</span><span class="p">))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">api_parameters</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[{'ParameterKey': 'ParameterA', 'ParameterValue': 'foo'}, {'ParameterKey': 'ParameterB', 'ParameterValue': 'bar'}]
-</pre></div>
-</div>
+<blockquote>
+<div><p>from cfp import FromParameterStore, StackParameters</p>
+<p>sp = StackParameters()
+sp.add(“ParameterA”, FromParameterStore(“/cfp/example1”))
+sp.add(“ParameterB”, FromParameterStore(“/cfp/example2”))</p>
+<p>print(sp.api_parameters)</p>
+</div></blockquote>
 </section>
 </section>
 
@@ -276,11 +271,9 @@
 
         <div class="related-information">
               Copyright &#169; 2021, Cariad Eccleston |
-            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
-              and
-              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
-              <a href="https://github.com/pradyunsg/furo">Furo theme</a>. |
-            <a class="muted-link" href="_sources/examples.rst.txt"
+          Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+          <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            | <a class="muted-link" href="_sources/examples.rst.txt"
                rel="nofollow">
               Show Source
             </a>
@@ -318,6 +311,6 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/scripts/main.js"></script>
+    <script src="_static/scripts/furo.js"></script>
     </body>
 </html>

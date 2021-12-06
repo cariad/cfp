@@ -1,4 +1,7 @@
-from typing import Dict, List, Optional, Type
+from functools import cached_property
+from typing import IO, Dict, List, Optional, Type
+
+from ansiscape import bright_blue, bright_yellow
 
 from cfp.exceptions import NoResolverError
 from cfp.resolver_factories import (
@@ -62,7 +65,7 @@ class StackParameters:
         if resolver not in self._resolvers:
             self._resolvers.append(resolver)
 
-    @property
+    @cached_property
     def api_parameters(self) -> List[ApiParameter]:
         """
         Gets the resolved parameters as a list ready to pass directly to
@@ -107,3 +110,20 @@ class StackParameters:
         """
 
         self._factories[factory] = None
+
+    def render(self, writer: IO[str]) -> None:
+        """Renders the parameters."""
+
+        longest = len(max([p.get("ParameterKey", "") for p in self.api_parameters]))
+
+        for p in self.api_parameters:
+            padded_name = p.get("ParameterKey", "").ljust(longest + 1)
+
+            use_previous = p.get("UsePreviousValue", False)
+
+            if use_previous:
+                value = "<previous value>"
+            else:
+                value = p.get("ResolvedValue", p.get("ParameterValue", ""))
+
+            writer.write(f"{bright_blue(padded_name)} = {bright_yellow(value)}\n")

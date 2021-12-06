@@ -5,11 +5,11 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="prev" title="Source" href="source.html" />
 
-    <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
+    <meta name="generator" content="sphinx-4.3.1, furo 2021.11.23"/>
         <title>FromParameterStore - cfp documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=7f0192ddeb2adecfbaa87ffbcf67d16358b30bc1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
     
     
 
@@ -197,37 +197,30 @@
 <h1><code class="xref py py-class docutils literal notranslate"><span class="pre">FromParameterStore</span></code><a class="headerlink" href="#fromparameterstore" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="cfp.sources.FromParameterStore">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cfp.sources.</span></span><span class="sig-name descname"><span class="pre">FromParameterStore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">boto3.session.Session</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cfp.sources.FromParameterStore" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cfp.sources.</span></span><span class="sig-name descname"><span class="pre">FromParameterStore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">boto3.session.Session</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cfp.sources.FromParameterStore" title="Permalink to this definition">¶</a></dt>
 <dd><p>Describes how to look-up a value in Amazon Web Services Systems Manager
 Parameter Store.</p>
 <p class="rubric">Example</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cfp</span> <span class="kn">import</span> <span class="n">FromParameterStore</span><span class="p">,</span> <span class="n">StackParameters</span>
-
-<span class="n">sp</span> <span class="o">=</span> <span class="n">StackParameters</span><span class="p">()</span>
-<span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"ParameterA"</span><span class="p">,</span> <span class="n">FromParameterStore</span><span class="p">(</span><span class="s2">"/cfp/example1"</span><span class="p">))</span>
-<span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"ParameterB"</span><span class="p">,</span> <span class="n">FromParameterStore</span><span class="p">(</span><span class="s2">"/cfp/example2"</span><span class="p">))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">api_parameters</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[{'ParameterKey': 'ParameterA', 'ParameterValue': 'foo'}, {'ParameterKey': 'ParameterB', 'ParameterValue': 'bar'}]
-</pre></div>
-</div>
+<p>from cfp import FromParameterStore, StackParameters</p>
+<p>sp = StackParameters()
+sp.add(“ParameterA”, FromParameterStore(“/cfp/example1”))
+sp.add(“ParameterB”, FromParameterStore(“/cfp/example2”))</p>
+<p>print(sp.api_parameters)</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="cfp.sources.FromParameterStore.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#cfp.sources.FromParameterStore.name" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#cfp.sources.FromParameterStore.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Name of the parameter in Parameter Store.</p>
 </dd></dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="cfp.sources.FromParameterStore.region">
-<span class="sig-name descname"><span class="pre">region</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#cfp.sources.FromParameterStore.region" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">region</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#cfp.sources.FromParameterStore.region" title="Permalink to this definition">¶</a></dt>
 <dd><p>Amazon Web Services region in which the parameter resides.</p>
 <p>Not required if <a class="reference internal" href="#cfp.sources.FromParameterStore.session" title="cfp.sources.FromParameterStore.session"><code class="xref py py-attr docutils literal notranslate"><span class="pre">session</span></code></a> is configured for the correct region, or
 if  <a class="reference internal" href="#cfp.sources.FromParameterStore.session" title="cfp.sources.FromParameterStore.session"><code class="xref py py-attr docutils literal notranslate"><span class="pre">session</span></code></a> is omitted but the default session region is correct.</p>
 </dd></dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="cfp.sources.FromParameterStore.session">
-<span class="sig-name descname"><span class="pre">session</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">boto3.session.Session</span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#cfp.sources.FromParameterStore.session" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">session</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">boto3.session.Session</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#cfp.sources.FromParameterStore.session" title="Permalink to this definition">¶</a></dt>
 <dd><p>boto3 session to use to retrieve the value from Parameter Store.</p>
 <p>A new session will be created if omitted. If <a class="reference internal" href="#cfp.sources.FromParameterStore.region" title="cfp.sources.FromParameterStore.region"><code class="xref py py-attr docutils literal notranslate"><span class="pre">region</span></code></a> is set then
 the new session will be configured for that region, otherwise the default
@@ -259,11 +252,9 @@ another account.</p>
 
         <div class="related-information">
               Copyright &#169; 2021, Cariad Eccleston |
-            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
-              and
-              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
-              <a href="https://github.com/pradyunsg/furo">Furo theme</a>. |
-            <a class="muted-link" href="../../_sources/python/sources/from_parameter_store.rst.txt"
+          Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+          <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            | <a class="muted-link" href="../../_sources/python/sources/from_parameter_store.rst.txt"
                rel="nofollow">
               Show Source
             </a>
@@ -281,6 +272,6 @@ another account.</p>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/scripts/main.js"></script>
+    <script src="../../_static/scripts/furo.js"></script>
     </body>
 </html>

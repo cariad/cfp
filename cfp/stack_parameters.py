@@ -2,6 +2,7 @@ from functools import cached_property
 from typing import IO, Dict, List, Optional, Type
 
 from ansiscape import bright_blue, bright_yellow
+from ansiscape.checks import should_emit_codes
 
 from cfp.exceptions import NoResolverError
 from cfp.resolver_factories import (
@@ -118,6 +119,7 @@ class StackParameters:
 
         for p in self.api_parameters:
             key = p.get("ParameterKey", "")
+
             if p.get("UsePreviousValue", False):
                 value = "<previous value>"
             else:
@@ -125,4 +127,8 @@ class StackParameters:
 
             padding = " " * (longest - len(key))
 
-            writer.write(f"{bright_blue(key)}{padding}= {bright_yellow(value)}\n")
+            if should_emit_codes():
+                key = bright_blue(key).encoded
+                value = bright_yellow(value).encoded
+
+            writer.write(f"{key}{padding} = {value}\n")

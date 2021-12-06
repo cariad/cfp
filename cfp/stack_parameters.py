@@ -114,16 +114,15 @@ class StackParameters:
     def render(self, writer: IO[str]) -> None:
         """Renders the parameters."""
 
-        longest = len(max([p.get("ParameterKey", "") for p in self.api_parameters]))
+        longest = max([len(p.get("ParameterKey", "")) for p in self.api_parameters])
 
         for p in self.api_parameters:
-            padded_name = p.get("ParameterKey", "").ljust(longest + 1)
-
-            use_previous = p.get("UsePreviousValue", False)
-
-            if use_previous:
+            key = p.get("ParameterKey", "")
+            if p.get("UsePreviousValue", False):
                 value = "<previous value>"
             else:
                 value = p.get("ResolvedValue", p.get("ParameterValue", ""))
 
-            writer.write(f"{bright_blue(padded_name)} = {bright_yellow(value)}\n")
+            padding = " " * (longest - len(key))
+
+            writer.write(f"{bright_blue(key)}{padding}= {bright_yellow(value)}\n")

@@ -38,7 +38,7 @@ setup(
     include_package_data=True,
     install_requires=[
         "ansiscape~=1.0",
-        "boto3~=1.18",
+        "boto3~=1.20",
     ],
     license="MIT",
     long_description=long_description,

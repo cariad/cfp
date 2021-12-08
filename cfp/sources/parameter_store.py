@@ -12,16 +12,15 @@ class FromParameterStore(Source):
     Describes how to look-up a value in Amazon Web Services Systems Manager
     Parameter Store.
 
-    Example:
+    For example:
 
-            from cfp import FromParameterStore, StackParameters
+    .. code-block:: python
 
-            sp = StackParameters()
-            sp.add("ParameterA", FromParameterStore("/cfp/example1"))
-            sp.add("ParameterB", FromParameterStore("/cfp/example2"))
+       from cfp import StackParameters
+       from cfp.sources import FromParameterStore
 
-            print(sp.api_parameters)
-
+       sp = StackParameters()
+       sp.add("InstanceType", FromParameterStore("/instance-type"))
     """
 
     name: str

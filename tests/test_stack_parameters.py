@@ -1,11 +1,17 @@
 # pyright: reportPrivateUsage=false
 
+from io import StringIO
+
 from pytest import raises
 
 from cfp import StackParameters
 from cfp.exceptions import NoResolverError
-from cfp.resolver_factories import ParameterStoreResolverFactory, StringResolverFactory
-from cfp.sources import FromParameterStore
+from cfp.resolver_factories import (
+    ParameterStoreResolverFactory,
+    StringResolverFactory,
+    UsePreviousValueResolverFactory,
+)
+from cfp.sources import FromParameterStore, UsePreviousValue
 
 
 def test_api() -> None:
@@ -45,6 +51,13 @@ def test_add__same_resolver() -> None:
     assert len(sp._resolvers) == 1
 
 
+def test_add__use_previous_value() -> None:
+    sp = StackParameters()
+    sp.add("foo", UsePreviousValue())
+    sp.add("bar", UsePreviousValue())
+    assert len(sp._resolvers) == 1
+
+
 def test_find_factory__fail() -> None:
     sp = StackParameters(default_resolvers=False)
     source = FromParameterStore(name="foo")
@@ -79,6 +92,7 @@ def test_init() -> None:
     assert sp._factories == {
         ParameterStoreResolverFactory: None,
         StringResolverFactory: None,
+        UsePreviousValueResolverFactory: None,
     }
 
 
@@ -89,3 +103,35 @@ def test_register_resolver() -> None:
     assert sp._factories == {
         ParameterStoreResolverFactory: None,
     }
+
+
+def test_render() -> None:
+    sp = StackParameters()
+    sp.add("foo", "one")
+    sp.add("bar", UsePreviousValue())
+
+    writer = StringIO()
+    sp.render(writer)
+
+    assert (
+        writer.getvalue()
+        == """foo = one
+bar = <previous value>
+"""
+    )
+
+
+def test_render__color() -> None:
+    sp = StackParameters()
+    sp.add("foo", "one")
+    sp.add("bar", UsePreviousValue())
+
+    writer = StringIO()
+    sp.render(writer, color=True)
+
+    assert (
+        writer.getvalue()
+        == """\x1b[38;5;12mfoo\x1b[39m = \x1b[38;5;11mone\x1b[39m
+\x1b[38;5;12mbar\x1b[39m = \x1b[38;5;11m<previous value>\x1b[39m
+"""
+    )

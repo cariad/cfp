@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usage &mdash; cfp  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="StackParameters class" href="stack-parameters.html" />
+    <link rel="prev" title="CFP" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> cfp
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">CFP</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#in-a-nutshell">In a nutshell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-parameter-values">Setting parameter values</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#known-values">Known values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#systems-manager-parameter-store-look-ups">Systems Manager Parameter Store look-ups</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#passing-stackparameters-to-boto3">Passing <strong>StackParameters</strong> to Boto3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logging-parameter-values">Logging parameter values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="stack-parameters.html"><strong>StackParameters</strong> class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sources/index.html">Sources</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">cfp</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Usage</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/usage.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline"></a></h1>
+<section id="in-a-nutshell">
+<h2>In a nutshell<a class="headerlink" href="#in-a-nutshell" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>Create an instance of <a class="reference internal" href="stack-parameters.html#cfp.StackParameters" title="cfp.StackParameters"><code class="xref py py-class docutils literal notranslate"><span class="pre">cfp.StackParameters</span></code></a>.</p></li>
+<li><p>Call <a class="reference internal" href="stack-parameters.html#cfp.StackParameters.add" title="cfp.StackParameters.add"><code class="xref py py-func docutils literal notranslate"><span class="pre">cfp.StackParameters.add()</span></code></a> to set the parameter values.</p></li>
+<li><p>Pass <a class="reference internal" href="stack-parameters.html#cfp.StackParameters.api_parameters" title="cfp.StackParameters.api_parameters"><code class="xref py py-attr docutils literal notranslate"><span class="pre">cfp.StackParameters.api_parameters</span></code></a> to your Boto3 function.</p></li>
+</ol>
+</section>
+<section id="setting-parameter-values">
+<h2>Setting parameter values<a class="headerlink" href="#setting-parameter-values" title="Permalink to this headline"></a></h2>
+<section id="known-values">
+<h3>Known values<a class="headerlink" href="#known-values" title="Permalink to this headline"></a></h3>
+<p>To pass known (hard-coded or otherwise looked-up) values, simply call <a class="reference internal" href="stack-parameters.html#cfp.StackParameters.add" title="cfp.StackParameters.add"><code class="xref py py-func docutils literal notranslate"><span class="pre">cfp.StackParameters.add()</span></code></a> with those values.</p>
+<p>For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cfp</span> <span class="kn">import</span> <span class="n">StackParameters</span>
+
+<span class="n">sp</span> <span class="o">=</span> <span class="n">StackParameters</span><span class="p">()</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;ParameterA&quot;</span><span class="p">,</span> <span class="s2">&quot;Value A&quot;</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;ParameterB&quot;</span><span class="p">,</span> <span class="s2">&quot;Value B&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="systems-manager-parameter-store-look-ups">
+<h3>Systems Manager Parameter Store look-ups<a class="headerlink" href="#systems-manager-parameter-store-look-ups" title="Permalink to this headline"></a></h3>
+<p>To look-up and set values from Systems Manager Parameter Store, set the parameter’s value to an instance of <a class="reference internal" href="sources/from-parameter-store.html#cfp.sources.FromParameterStore" title="cfp.sources.FromParameterStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">cfp.sources.FromParameterStore</span></code></a>.</p>
+<p>While CloudFormation does have baked-in support for reading Systems Manager parameters, it can read only parameters in the same region and account as your stack. CFP supports cross-region and cross-account look-ups.</p>
+<p>The following example reads three parameters:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/instance-type</span></code> is read using the current default credentials and region.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/log-level</span></code> is read using the current default credentials from “eu-west-2”.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/secret-sauce</span></code> is read using a Boto3 session crafted for reading from a different AWS account.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cfp</span> <span class="kn">import</span> <span class="n">StackParameters</span>
+<span class="kn">from</span> <span class="nn">cfp.sources</span> <span class="kn">import</span> <span class="n">FromParameterStore</span>
+
+
+<span class="n">sp</span> <span class="o">=</span> <span class="n">StackParameters</span><span class="p">()</span>
+
+<span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+   <span class="s2">&quot;InstanceType&quot;</span><span class="p">,</span>
+   <span class="n">FromParameterStore</span><span class="p">(</span><span class="s2">&quot;/instance-type&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+   <span class="s2">&quot;LogLevel&quot;</span><span class="p">,</span>
+   <span class="n">FromParameterStore</span><span class="p">(</span><span class="s2">&quot;/log-level&quot;</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="s2">&quot;eu-west-2&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+   <span class="s2">&quot;SecretSauce&quot;</span><span class="p">,</span>
+   <span class="n">FromParameterStore</span><span class="p">(</span><span class="s2">&quot;/secret-sauce&quot;</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">other_account</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="passing-stackparameters-to-boto3">
+<h2>Passing <strong>StackParameters</strong> to Boto3<a class="headerlink" href="#passing-stackparameters-to-boto3" title="Permalink to this headline"></a></h2>
+<p>The <a class="reference internal" href="stack-parameters.html#cfp.StackParameters.api_parameters" title="cfp.StackParameters.api_parameters"><code class="xref py py-attr docutils literal notranslate"><span class="pre">cfp.StackParameters.api_parameters</span></code></a> property can be passed directly to Boto3 functions like the CloudFormation client’s <code class="docutils literal notranslate"><span class="pre">create_change_set()</span></code>.</p>
+<p>For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cfp</span> <span class="kn">import</span> <span class="n">StackParameters</span>
+<span class="kn">from</span> <span class="nn">boto3.session</span> <span class="kn">import</span> <span class="n">Session</span>
+
+
+<span class="n">sp</span> <span class="o">=</span> <span class="n">StackParameters</span><span class="p">()</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;ParameterA&quot;</span><span class="p">,</span> <span class="s2">&quot;Value A&quot;</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;ParameterB&quot;</span><span class="p">,</span> <span class="s2">&quot;Value B&quot;</span><span class="p">)</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s2">&quot;cloudformation&quot;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">create_change_set</span><span class="p">(</span>
+   <span class="n">StackName</span><span class="o">=</span><span class="s2">&quot;MyStack&quot;</span><span class="p">,</span>
+   <span class="n">ChangeSetName</span><span class="o">=</span><span class="s2">&quot;MyChangeSet&quot;</span><span class="p">,</span>
+   <span class="n">ChangeSetType</span><span class="o">=</span><span class="s2">&quot;UPDATE&quot;</span><span class="p">,</span>
+   <span class="n">Parameters</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">api_parameters</span><span class="p">,</span>
+   <span class="n">TemplateBody</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="logging-parameter-values">
+<h2>Logging parameter values<a class="headerlink" href="#logging-parameter-values" title="Permalink to this headline"></a></h2>
+<p>For example:</p>
+<p>The <a class="reference internal" href="stack-parameters.html#cfp.StackParameters.render" title="cfp.StackParameters.render"><code class="xref py py-func docutils literal notranslate"><span class="pre">cfp.StackParameters.render()</span></code></a> function renders the full set of parameters and their values to a string writer.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cfp</span> <span class="kn">import</span> <span class="n">StackParameters</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
+
+
+<span class="n">sp</span> <span class="o">=</span> <span class="n">StackParameters</span><span class="p">()</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;ParameterA&quot;</span><span class="p">,</span> <span class="s2">&quot;Value A&quot;</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;ParameterB&quot;</span><span class="p">,</span> <span class="s2">&quot;Value B&quot;</span><span class="p">)</span>
+
+<span class="n">writer</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">()</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">writer</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ParameterA = Value A
+ParameterB = Value B
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="CFP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="stack-parameters.html" class="btn btn-neutral float-right" title="StackParameters class" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Cariad Eccleston.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

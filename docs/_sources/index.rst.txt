@@ -1,39 +1,52 @@
-cfp
+CFP
 ===
 
-**cfp** is a Python package for building Amazon Web Services **C**\ loud\ **F**\ ormation stack **p**\ arameters.
+**CFP** is a Python package for building Amazon Web Services CloudFormation stack parameters.
 
-In particular, **cfp** helps to efficiently reference parameter values in Parameter Store, even across accounts and regions.
+- Supports cross-region and cross-account Systems Manager Parameter Store look-ups.
+- Renders beautiful, colourful parameter keys and values for your logs.
+- Compatible with Boto3.
 
-The output is compatible with boto3.
+Getting Started
+---------------
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Docs
+**CFP** requires Python 3.8 or later.
 
-   self
-   examples
-   python/index
-
-Installation
-------------
-
-**cfp** requires Python 3.8 or later.
+Install **CFP** via pip:
 
 .. code-block:: console
 
-   $ pip install cfp
+   pip install cfp
 
-Feedback
---------
 
-Please raise bugs, request features and ask questions at `github.com/cariad/cfp/issues <https://github.com/cariad/cfp/issues>`_.
-
-Mention if you're a `sponsor <https://github.com/sponsors/cariad>`_ and I'll respond as a priority. Thank you!
-
-Project
+Licence
 -------
 
-The source for **cfp** is available at `github.com/cariad/cfp <https://github.com/cariad/cfp>`_ under the MIT licence.
+**CFP**  is released at `github.com/cariad/cfp <https://github.com/cariad/cfp>`_ under the MIT Licence.
 
-And, **hello!** I'm `Cariad Eccleston <https://cariad.io>`_ and I'm an independent/freelance software engineer. If my work has value to you, please consider `sponsoring <https://github.com/sponsors/cariad>`_ me.
+See `LICENSE <https://github.com/cariad/cfp/blob/main/LICENSE>`_ for more information.
+
+Contributing
+------------
+
+To contribute a bug report, enhancement or feature request, please raise an issue at `github.com/cariad/cfp/issues <https://github.com/cariad/cfp/issues>`_.
+
+If you want to contribute a code change, please raise an issue first so we can chat about the direction you want to take.
+
+The Author
+----------
+
+Hello! 👋 I'm **Cariad Eccleston** and I'm a freelance DevOps and backend engineer. My contact details are available on my personal wiki at `cariad.earth <https://cariad.earth>`_.
+
+Please consider supporting my open source projects by `sponsoring me on GitHub <https://github.com/sponsors/cariad/>`_.
+
+Contents
+--------
+
+.. toctree::
+   :maxdepth: 1
+
+   self
+   usage
+   stack-parameters
+   sources/index

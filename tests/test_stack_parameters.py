@@ -1,11 +1,17 @@
 # pyright: reportPrivateUsage=false
 
+from io import StringIO
+
 from pytest import raises
 
 from cfp import StackParameters
 from cfp.exceptions import NoResolverError
-from cfp.resolver_factories import ParameterStoreResolverFactory, StringResolverFactory
-from cfp.sources import FromParameterStore
+from cfp.resolver_factories import (
+    ParameterStoreResolverFactory,
+    StringResolverFactory,
+    UsePreviousValueResolverFactory,
+)
+from cfp.sources import FromParameterStore, UsePreviousValue
 
 
 def test_api() -> None:
@@ -79,6 +85,7 @@ def test_init() -> None:
     assert sp._factories == {
         ParameterStoreResolverFactory: None,
         StringResolverFactory: None,
+        UsePreviousValueResolverFactory: None,
     }
 
 
@@ -89,3 +96,19 @@ def test_register_resolver() -> None:
     assert sp._factories == {
         ParameterStoreResolverFactory: None,
     }
+
+
+def test_render() -> None:
+    sp = StackParameters()
+    sp.add("foo", "one")
+    sp.add("bar", UsePreviousValue())
+
+    writer = StringIO()
+    sp.render(writer)
+
+    assert (
+        writer.getvalue()
+        == """foo = one
+bar = <previous value>
+"""
+    )

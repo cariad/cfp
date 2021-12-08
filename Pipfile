@@ -3,15 +3,10 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
 
-[packages]
-ansiscape = "~=1.0"
-boto3 = "~=1.20"
-
 [dev-packages]
-black = "==21.9b0"
+black = "==21.12b0"
 boto3-stubs = {extras = ["ssm"], version = "*"}
 flake8 = "*"
-furo = "*"
 isort = "*"
 mock = "*"
 mypy = "*"
@@ -19,9 +14,19 @@ pytest = "*"
 pytest-cov = "*"
 shellcheck-py = "*"
 sphinx = "*"
+sphinx-rtd-theme = "*"
 twine = "*"
 types-mock = "*"
 yamllint = "*"
 
+[packages]
+ansiscape = "~=1.0"
+boto3 = "~=1.20"
+
 [requires]
 python_version = "3.10"
+
+[scripts]
+build = "./scripts/build.sh"
+lint = "./scripts/lint.sh"
+test = "./scripts/test.sh"

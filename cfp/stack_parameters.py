@@ -9,6 +9,7 @@ from cfp.resolver_factories import (
     AnyResolverFactory,
     ParameterStoreResolverFactory,
     StringResolverFactory,
+    UsePreviousValueResolverFactory,
 )
 from cfp.resolvers import AnyResolver
 from cfp.sources import AnySource
@@ -35,6 +36,7 @@ class StackParameters:
         if default_resolvers:
             self.register_resolver(StringResolverFactory)
             self.register_resolver(ParameterStoreResolverFactory)
+            self.register_resolver(UsePreviousValueResolverFactory)
 
     def _find_factory(self, source: AnySource) -> Type[AnyResolverFactory]:
         for factory_type in self._factories:
@@ -55,8 +57,8 @@ class StackParameters:
         Adds a new stack parameter with direction for finding the value.
 
         Arguments:
-            key:    Stack parameter key
-            source: Value source
+            key: Stack parameter key
+            source: Value or source
         """
 
         factory_type = self._find_factory(source)
@@ -69,29 +71,7 @@ class StackParameters:
     @cached_property
     def api_parameters(self) -> List[ApiParameter]:
         """
-        Gets the resolved parameters as a list ready to pass directly to
-        CloudFormation.
-
-        Example:
-
-            .. code-block:: python
-
-                from cfp import StackParameters
-                from boto3.session import Session
-
-                sp = StackParameters()
-                sp.add("ParameterA", "Value A")
-                sp.add("ParameterB", "Value B")
-
-                client = session.client("cloudformation")
-                client.create_change_set(
-                    StackName="MyStack",
-                    ChangeSetName="MyChangeSet",
-                    ChangeSetType="UPDATE,
-                    Parameters=sp.api_parameters,
-                    TemplateBody="...",
-                )
-
+        Gets the resolved parameters as a list ready to pass directly to Boto3.
         """
 
         cf_params: List[ApiParameter] = []
@@ -112,8 +92,14 @@ class StackParameters:
 
         self._factories[factory] = None
 
-    def render(self, writer: IO[str]) -> None:
-        """Renders the parameters."""
+    def render(self, writer: IO[str], color: Optional[bool] = None) -> None:
+        """
+        Renders the parameters.
+
+        Arguments:
+            writer: String writer.
+            color: Emit color. The default `None` delegates the decision to Ansiscape.
+        """
 
         longest = max([len(p.get("ParameterKey", "")) for p in self.api_parameters])
 
@@ -123,11 +109,14 @@ class StackParameters:
             if p.get("UsePreviousValue", False):
                 value = "<previous value>"
             else:
-                value = p.get("ResolvedValue", p.get("ParameterValue", ""))
+                value = p.get("ParameterValue", "")
 
             padding = " " * (longest - len(key))
 
-            if should_emit_codes():
+            if color is None:
+                color = should_emit_codes()
+
+            if color:
                 key = bright_blue(key).encoded
                 value = bright_yellow(value).encoded
 

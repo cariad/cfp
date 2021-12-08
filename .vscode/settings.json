@@ -1,10 +1,12 @@
 {
   "cSpell.words": [
-    "furo",
+    "getvalue",
     "maxdepth",
+    "mypy",
     "testcode",
     "testoutput",
-    "toctree"
+    "toctree",
+    "xlarge"
   ],
   "restructuredtext.confPath": "${workspaceFolder}/docsrc/source"
 }

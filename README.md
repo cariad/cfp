@@ -1,69 +1,17 @@
-# cfp
+# CFP: CloudFormation Parameters
 
 [![CircleCI](https://circleci.com/gh/cariad/cfp/tree/main.svg?style=shield)](https://circleci.com/gh/cariad/cfp/tree/main) [![codecov](https://codecov.io/gh/cariad/cfp/branch/main/graph/badge.svg?token=xyqHGoOyMM)](https://codecov.io/gh/cariad/cfp)
 
-**cfp** is a Python package for building Amazon Web Services **C**loud**F**ormation stack **p**arameters.
+**CFP** is a Python package for building Amazon Web Services CloudFormation stack parameters.
 
-In particular, cfp helps to efficiently reference parameter values in Parameter Store, even across accounts and regions.
-
-The output is compatible with boto3.
-
-## Examples
-
-```python
-from cfp import StackParameters
-
-sp = StackParameters()
-sp.add("ParameterA", "Value A")
-sp.add("ParameterB", "Value B")
-
-print(sp.api_parameters)
-```
-
-```python
-[{'ParameterKey': 'ParameterA', 'ParameterValue': 'Value A'}, {'ParameterKey': 'ParameterB', 'ParameterValue': 'Value B'}]
-```
-
-The `api_parameters` property can be passed directly to boto3:
-
-```python
-from cfp import StackParameters
-from boto3.session import Session
-
-sp = StackParameters()
-sp.add("ParameterA", "Value A")
-sp.add("ParameterB", "Value B")
-
-client = session.client("cloudformation")
-client.create_change_set(
-    StackName="MyStack",
-    ChangeSetName="MyChangeSet",
-    ChangeSetType="UPDATE,
-    Parameters=sp.api_parameters,
-    TemplateBody="...",
-)
-```
-
-To look-up a value in Systems Manager Parameter Store, set the parameter's value to a `.FromParameterStore` instance:
-
-```python
-from cfp import FromParameterStore, StackParameters
-
-sp = StackParameters()
-sp.add("ParameterA", FromParameterStore("/cfp/example1"))
-sp.add("ParameterB", FromParameterStore("/cfp/example2"))
-
-print(sp.api_parameters)
-```
-
-```python
-[{'ParameterKey': 'ParameterA', 'ParameterValue': 'foo'}, {'ParameterKey': 'ParameterB', 'ParameterValue': 'bar'}]
-```
+- Supports cross-region and cross-account Systems Manager Parameter Store look-ups.
+- Renders beautiful, colourful parameter keys and values for your logs.
+- Compatible with Boto3.
 
 Read the full documentation at [cariad.github.io/cfp](https://cariad.github.io/cfp).
 
 ## 👋 Hello!
 
-**Hello!** I'm [Cariad Eccleston](https://cariad.earth) and I'm an independent/freelance software engineer. If my work has value to you, please consider [sponsoring](https://github.com/sponsors/cariad/).
+Hello! 👋 I’m Cariad Eccleston and I’m a freelance DevOps and backend engineer. My contact details are available on my personal wiki at [cariad.earth)](https://cariad.earth).
 
-If you ever raise a bug, request a feature or ask a question then mention that you're a sponsor and I'll respond as a priority. Thank you!
+Please consider supporting my open source projects by [sponsoring me on GitHub](https://github.com/sponsors/cariad/).

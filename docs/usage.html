@@ -43,10 +43,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#in-a-nutshell">In a nutshell</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#setting-parameter-values">Setting parameter values</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#known-values">Known values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#previous-values">Previous values</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#systems-manager-parameter-store-look-ups">Systems Manager Parameter Store look-ups</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#passing-stackparameters-to-boto3">Passing <strong>StackParameters</strong> to Boto3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#passing-stack-parameters-to-boto3">Passing stack parameters to Boto3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#logging-parameter-values">Logging parameter values</a></li>
 </ul>
 </li>
@@ -102,6 +103,18 @@
 </pre></div>
 </div>
 </section>
+<section id="previous-values">
+<h3>Previous values<a class="headerlink" href="#previous-values" title="Permalink to this headline"></a></h3>
+<p>To use a parameter’s previous value, pass an instance of <a class="reference internal" href="sources/use-previous.html#cfp.sources.UsePreviousValue" title="cfp.sources.UsePreviousValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">cfp.sources.UsePreviousValue</span></code></a>.</p>
+<p>For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cfp</span> <span class="kn">import</span> <span class="n">StackParameters</span>
+<span class="kn">from</span> <span class="nn">cfp.sources</span> <span class="kn">import</span> <span class="n">UsePreviousValue</span>
+
+<span class="n">sp</span> <span class="o">=</span> <span class="n">StackParameters</span><span class="p">()</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;InstanceType&quot;</span><span class="p">,</span> <span class="n">UsePreviousValue</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
 <section id="systems-manager-parameter-store-look-ups">
 <h3>Systems Manager Parameter Store look-ups<a class="headerlink" href="#systems-manager-parameter-store-look-ups" title="Permalink to this headline"></a></h3>
 <p>To look-up and set values from Systems Manager Parameter Store, set the parameter’s value to an instance of <a class="reference internal" href="sources/from-parameter-store.html#cfp.sources.FromParameterStore" title="cfp.sources.FromParameterStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">cfp.sources.FromParameterStore</span></code></a>.</p>
@@ -114,7 +127,6 @@
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cfp</span> <span class="kn">import</span> <span class="n">StackParameters</span>
 <span class="kn">from</span> <span class="nn">cfp.sources</span> <span class="kn">import</span> <span class="n">FromParameterStore</span>
-
 
 <span class="n">sp</span> <span class="o">=</span> <span class="n">StackParameters</span><span class="p">()</span>
 
@@ -136,13 +148,12 @@
 </div>
 </section>
 </section>
-<section id="passing-stackparameters-to-boto3">
-<h2>Passing <strong>StackParameters</strong> to Boto3<a class="headerlink" href="#passing-stackparameters-to-boto3" title="Permalink to this headline"></a></h2>
+<section id="passing-stack-parameters-to-boto3">
+<h2>Passing stack parameters to Boto3<a class="headerlink" href="#passing-stack-parameters-to-boto3" title="Permalink to this headline"></a></h2>
 <p>The <a class="reference internal" href="stack-parameters.html#cfp.StackParameters.api_parameters" title="cfp.StackParameters.api_parameters"><code class="xref py py-attr docutils literal notranslate"><span class="pre">cfp.StackParameters.api_parameters</span></code></a> property can be passed directly to Boto3 functions like the CloudFormation client’s <code class="docutils literal notranslate"><span class="pre">create_change_set()</span></code>.</p>
 <p>For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cfp</span> <span class="kn">import</span> <span class="n">StackParameters</span>
 <span class="kn">from</span> <span class="nn">boto3.session</span> <span class="kn">import</span> <span class="n">Session</span>
-
 
 <span class="n">sp</span> <span class="o">=</span> <span class="n">StackParameters</span><span class="p">()</span>
 <span class="n">sp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;ParameterA&quot;</span><span class="p">,</span> <span class="s2">&quot;Value A&quot;</span><span class="p">)</span>
@@ -161,8 +172,8 @@
 </section>
 <section id="logging-parameter-values">
 <h2>Logging parameter values<a class="headerlink" href="#logging-parameter-values" title="Permalink to this headline"></a></h2>
-<p>For example:</p>
 <p>The <a class="reference internal" href="stack-parameters.html#cfp.StackParameters.render" title="cfp.StackParameters.render"><code class="xref py py-func docutils literal notranslate"><span class="pre">cfp.StackParameters.render()</span></code></a> function renders the full set of parameters and their values to a string writer.</p>
+<p>For example:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cfp</span> <span class="kn">import</span> <span class="n">StackParameters</span>
 <span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
 

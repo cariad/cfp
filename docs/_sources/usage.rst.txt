@@ -26,6 +26,22 @@ For example:
    sp.add("ParameterA", "Value A")
    sp.add("ParameterB", "Value B")
 
+Previous values
+~~~~~~~~~~~~~~~
+
+To use a parameter's previous value, pass an instance of :class:`cfp.sources.UsePreviousValue`.
+
+For example:
+
+.. code-block:: python
+
+   from cfp import StackParameters
+   from cfp.sources import UsePreviousValue
+
+   sp = StackParameters()
+   sp.add("InstanceType", UsePreviousValue())
+
+
 Systems Manager Parameter Store look-ups
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -44,7 +60,6 @@ The following example reads three parameters:
    from cfp import StackParameters
    from cfp.sources import FromParameterStore
 
-
    sp = StackParameters()
 
    sp.add(
@@ -62,8 +77,8 @@ The following example reads three parameters:
       FromParameterStore("/secret-sauce", session=other_account),
    )
 
-Passing **StackParameters** to Boto3
-------------------------------------
+Passing stack parameters to Boto3
+---------------------------------
 
 The :py:attr:`cfp.StackParameters.api_parameters` property can be passed directly to Boto3 functions like the CloudFormation client's ``create_change_set()``.
 
@@ -73,7 +88,6 @@ For example:
 
    from cfp import StackParameters
    from boto3.session import Session
-
 
    sp = StackParameters()
    sp.add("ParameterA", "Value A")
@@ -91,9 +105,9 @@ For example:
 Logging parameter values
 ------------------------
 
-For example:
-
 The :py:func:`cfp.StackParameters.render` function renders the full set of parameters and their values to a string writer.
+
+For example:
 
 .. testcode::
 

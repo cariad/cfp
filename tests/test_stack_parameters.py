@@ -51,6 +51,13 @@ def test_add__same_resolver() -> None:
     assert len(sp._resolvers) == 1
 
 
+def test_add__use_previous_value() -> None:
+    sp = StackParameters()
+    sp.add("foo", UsePreviousValue())
+    sp.add("bar", UsePreviousValue())
+    assert len(sp._resolvers) == 1
+
+
 def test_find_factory__fail() -> None:
     sp = StackParameters(default_resolvers=False)
     source = FromParameterStore(name="foo")
@@ -110,5 +117,21 @@ def test_render() -> None:
         writer.getvalue()
         == """foo = one
 bar = <previous value>
+"""
+    )
+
+
+def test_render__color() -> None:
+    sp = StackParameters()
+    sp.add("foo", "one")
+    sp.add("bar", UsePreviousValue())
+
+    writer = StringIO()
+    sp.render(writer, color=True)
+
+    assert (
+        writer.getvalue()
+        == """\x1b[38;5;12mfoo\x1b[39m = \x1b[38;5;11mone\x1b[39m
+\x1b[38;5;12mbar\x1b[39m = \x1b[38;5;11m<previous value>\x1b[39m
 """
     )

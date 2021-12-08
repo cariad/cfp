@@ -12,6 +12,6 @@ Read the full documentation at [cariad.github.io/cfp](https://cariad.github.io/c
 
 ## 👋 Hello!
 
-Hello! 👋 I’m Cariad Eccleston and I’m a freelance DevOps and backend engineer. My contact details are available on my personal wiki at [cariad.earth)](https://cariad.earth).
+Hello! 👋 I’m Cariad Eccleston and I’m a freelance DevOps and backend engineer. My contact details are available on my personal wiki at [cariad.earth](https://cariad.earth).
 
 Please consider supporting my open source projects by [sponsoring me on GitHub](https://github.com/sponsors/cariad/).

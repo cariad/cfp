@@ -129,3 +129,39 @@ For example:
 
    ParameterA = Value A
    ParameterB = Value B
+
+Unit testing
+------------
+
+Say you have a function that builds and returns :class:`cfp.StackParameters`:
+
+.. code-block:: python
+
+   from cfp import StackParameters
+   from cfp.sources import FromParameterStore
+
+   def parameters() -> StackParameters:
+      sp = StackParameters()
+      sp.add("ParameterA", "Value A")
+      sp.add("ParameterB", FromParameterStore("/b"))
+      return sp
+
+You can unit test this function by asserting on the length of the :class:`cfp.StackParameters` as well as the sources of each parameter key:
+
+.. code-block:: python
+
+   from cfp import StackParameters
+   from cfp.sources import FromParameterStore
+   from example import parameters
+
+   def test_parameters__len() -> None:
+      sp = parameters()
+      assert len(sp) == 2
+
+   def test_parameters__param_a() -> None:
+      sp = parameters()
+      assert sp["ParameterA"] == "Value A"
+
+   def test_parameters__param_b() -> None:
+      sp = parameters()
+      assert sp["ParameterB"] == FromParameterStore("/b")

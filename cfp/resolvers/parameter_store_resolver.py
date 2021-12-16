@@ -10,6 +10,8 @@ from cfp.types import ApiParameter, StackParameterKey
 
 class ParameterStoreResolver(Resolver[FromParameterStore]):
     def __init__(self) -> None:
+        super().__init__()
+
         # Map of Parameter Store names to CloudFormation names:
         self._map: Dict[str, StackParameterKey] = {}
 

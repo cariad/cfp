@@ -6,6 +6,7 @@ CFP
 - Supports cross-region and cross-account Systems Manager Parameter Store look-ups.
 - Renders beautiful, colourful parameter keys and values for your logs.
 - Compatible with Boto3.
+- Unit testable.
 
 Getting Started
 ---------------
@@ -16,8 +17,7 @@ Install **CFP** via pip:
 
 .. code-block:: console
 
-   pip install cfp
-
+   $ pip install cfp
 
 Licence
 -------

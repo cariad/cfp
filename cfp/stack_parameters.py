@@ -1,5 +1,5 @@
 from functools import cached_property
-from typing import IO, Dict, List, Optional, Type
+from typing import IO, Dict, List, Optional, Type, cast
 
 from ansiscape import bright_blue, bright_yellow
 from ansiscape.checks import should_emit_codes
@@ -20,7 +20,25 @@ Factories = Dict[Type[AnyResolverFactory], Optional[AnyResolverFactory]]
 
 class StackParameters:
     """
-    Builds a list of CloudFormation stack parameters.
+    A list of CloudFormation stack parameters.
+
+    Check if a parameter has been added via ``in``:
+
+    .. code-block:: python
+
+       >>> "foo" in stack_parameters
+
+    Get a parameter's source by querying the key:
+
+    .. code-block:: python
+
+       >>> stack_parameters["foo"]
+
+    Count the added parameters via ``len``:
+
+    .. code-block:: python
+
+       >>> len(stack_parameters)
 
     Arguments:
         default_resolvers: Register the default resolvers
@@ -37,6 +55,22 @@ class StackParameters:
             self.register_resolver(StringResolverFactory)
             self.register_resolver(ParameterStoreResolverFactory)
             self.register_resolver(UsePreviousValueResolverFactory)
+
+    def __contains__(self, key: str) -> bool:
+        try:
+            self[key]
+            return True
+        except KeyError:
+            return False
+
+    def __getitem__(self, key: str) -> AnySource:
+        for resolver in self._resolvers:
+            if key in resolver:
+                return cast(AnySource, resolver[key])
+        raise KeyError(key)
+
+    def __len__(self) -> int:
+        return sum([len(resolver) for resolver in self._resolvers])
 
     def _find_factory(self, source: AnySource) -> Type[AnyResolverFactory]:
         for factory_type in self._factories:

@@ -58,6 +58,17 @@ def test_add__use_previous_value() -> None:
     assert len(sp._resolvers) == 1
 
 
+def test_contains() -> None:
+    sp = StackParameters()
+    sp.add("foo", FromParameterStore(name="foo"))
+    assert "foo" in sp
+
+
+def test_contains_false() -> None:
+    sp = StackParameters()
+    assert "foo" not in sp
+
+
 def test_find_factory__fail() -> None:
     sp = StackParameters(default_resolvers=False)
     source = FromParameterStore(name="foo")
@@ -72,6 +83,21 @@ def test_find_factory__ok() -> None:
     source = FromParameterStore(name="foo")
     factory_type = sp._find_factory(source)
     assert factory_type is ParameterStoreResolverFactory
+
+
+def test_get() -> None:
+    sp = StackParameters()
+    sp.add("foo", FromParameterStore(name="foo"))
+    sp.add("woo", "war")
+    assert sp["foo"] == FromParameterStore(name="foo")
+    assert sp["woo"] == "war"
+
+
+def test_get__not_exists() -> None:
+    sp = StackParameters()
+    with raises(KeyError) as ex:
+        sp["foo"]
+    assert str(ex.value) == "'foo'"
 
 
 def test_get_factory__no_existing() -> None:
@@ -94,6 +120,24 @@ def test_init() -> None:
         StringResolverFactory: None,
         UsePreviousValueResolverFactory: None,
     }
+
+
+def test_len_0() -> None:
+    sp = StackParameters()
+    assert len(sp) == 0
+
+
+def test_len_1() -> None:
+    sp = StackParameters()
+    sp.add("foo", FromParameterStore(name="foo"))
+    assert len(sp) == 1
+
+
+def test_len_2() -> None:
+    sp = StackParameters()
+    sp.add("foo", FromParameterStore(name="foo"))
+    sp.add("bar", "bar")
+    assert len(sp) == 2
 
 
 def test_register_resolver() -> None:

@@ -7,8 +7,9 @@
 - Supports cross-region and cross-account Systems Manager Parameter Store look-ups.
 - Renders beautiful, colourful parameter keys and values for your logs.
 - Compatible with Boto3.
+- Unit testable.
 
-Read the full documentation at [cariad.github.io/cfp](https://cariad.github.io/cfp).
+**Read the full documentation at [cariad.github.io/cfp](https://cariad.github.io/cfp).**
 
 ## 👋 Hello!
 

@@ -49,6 +49,18 @@ def test_consider_region__first_value() -> None:
     assert r._region == "eu-west-2"
 
 
+def test_contains() -> None:
+    r = ParameterStoreResolver()
+    r.queue("foo", FromParameterStore(name="foo"))
+    assert "foo" in r
+
+
+def test_getitem() -> None:
+    r = ParameterStoreResolver()
+    r.queue("foo", FromParameterStore(name="foo"))
+    assert r["foo"] == FromParameterStore(name="foo")
+
+
 def test_get_session__existing() -> None:
     r = ParameterStoreResolver()
     session = Mock()
@@ -77,6 +89,12 @@ def test_get_session__with_region() -> None:
     ) as session_init:
         assert r._get_session() == session
         session_init.assert_called_once_with(region_name="eu-west-2")
+
+
+def test_len() -> None:
+    r = ParameterStoreResolver()
+    r.queue("foo", FromParameterStore(name="foo"))
+    assert len(r) == 1
 
 
 def test_queue() -> None:

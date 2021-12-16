@@ -73,7 +73,19 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="cfp.StackParameters">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cfp.</span></span><span class="sig-name descname"><span class="pre">StackParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">default_resolvers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cfp.StackParameters" title="Permalink to this definition"></a></dt>
-<dd><p>Builds a list of CloudFormation stack parameters.</p>
+<dd><p>A list of CloudFormation stack parameters.</p>
+<p>Check if a parameter has been added via <code class="docutils literal notranslate"><span class="pre">in</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;foo&quot;</span> <span class="ow">in</span> <span class="n">stack_parameters</span>
+</pre></div>
+</div>
+<p>Get a parameter’s source by querying the key:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">stack_parameters</span><span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Count the added parameters via <code class="docutils literal notranslate"><span class="pre">len</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">stack_parameters</span><span class="p">)</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>default_resolvers</strong> – Register the default resolvers</p>
